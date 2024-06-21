@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page</title>
+    <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.min.css">
+</head>
+
+<body>
+
+<main>
+    
+    <!--/*@thymesVar id="customer" type="com.example.charter.model.CustomerController.java"*/-->
+    <!--/*@thymesVar id="yacht" type="com.example.charter.logic.TempService.java"*/-->
+
+    
+    <fieldset>
+        <legend>Customer details</legend>
+<div><table>
+    <thead>
+    <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Licence</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer : ${customer}">
+        <td th:text="${customer.firstName}"></td>
+        <td th:text="${customer.lastName}"></td>
+        <td th:text="${customer.phoneNumber}"></td>
+        <td th:text="${customer.email}"></td>
+        <td th:text="${customer.licenceNumber}"></td>
+
+        
+
+
+    </tr>
+    </tbody>
+    </table>
+</div>
+</fieldset>
+
+<br><br>
+
+<br>
+<a th:href="@{/showAllReservationsList}">Back</a>
+
+</main>
+</body>
+</html>

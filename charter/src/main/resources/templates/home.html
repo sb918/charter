@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page</title>
+    <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.min.css">
+</head>
+<body>
+<main>
+    <!--/*@thymesVar id="reservation" type="com.example.charter.model.ReservationRepository.java"*/-->
+    <!--/*@thymesVar id="yacht" type="com.example.charter.model.YachtRepository.java"*/-->
+    <!--/*@thymesVar id="customer" type="com.example.charter.model.CustomerRepository.java"*/-->
+    
+
+
+
+
+        <fieldset>
+            <legend>Fleet management</legend>
+                    
+                        <a th:href="@{/showAllYachtsList}">Yacht management</a>
+                    
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Customer management</legend>
+                    
+                        <a th:href="@{/showAllCustomersList}">Customers</a>
+                    
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Reservations</legend>
+                    
+                        <a th:href="@{/showAllReservationsList}">Show and manage reservations</a>
+                    
+        </fieldset>
+
+
+
+  
+    
+    
+
+
+
+
+</main>
+
+</body>
+</html>

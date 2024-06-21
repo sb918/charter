@@ -1,0 +1,10 @@
+drop table if exists reservations;
+create table reservations(
+    id int primary key auto_increment,
+    date_from date,
+    date_to date,
+    reserved_yacht_id int,
+    reserved_customer_id int
+
+
+);

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page</title>
+    <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.min.css">
+</head>
+
+<body>
+
+<main><div>
+    
+    <!--/*@thymesVar id="customer" type="com.example.charter.model.CustomerController.java"*/-->
+    <!--/*@thymesVar id="yacht" type="com.example.charter.logic.TempService.java"*/-->
+
+    
+
+<div><table>
+    <thead>
+    <tr>
+        <th>From</th>
+        <th>To</th>
+        <th>Customer</th>
+        <th>Yacht</th>
+    
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="reservation : ${reservations}">
+        <td th:text="${reservation.reservationFrom}"></td>
+        <td th:text="${reservation.reservationTo}"></td>
+        <td > <a th:href="@{/customerDetails/{id}(id=${reservation.reservedCustomerId})}"><span th:text="${reservation.reservedCustomerId}"></span></a></td>
+        <td > <a th:href="@{/yachtDetails/{id}(id=${reservation.reservedYachtId})}"><span th:text="${reservation.reservedYachtId}"></span></a></td>
+
+      
+
+        <td> <a th:href="@{/deleteReservation/{id}(id=${reservation.id})}">Delete</a></td>
+        
+
+
+    </tr>
+    </tbody>
+    </table>
+</div>
+
+
+<br><br>
+<fieldset>
+    <legend>New reservation creator</legend>
+            
+                <a th:href="@{/showNewReservationForm21}">Add reservation</a>
+            
+</fieldset>
+<br>
+<a th:href="@{/home}">Back to home screen</a>
+
+</main>
+</body>
+</html>

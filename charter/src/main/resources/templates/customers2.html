@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page</title>
+    <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.min.css">
+</head>
+<body>
+
+<main>
+    <!--/*@thymesVar id="customers" type="com.example.charter.model.CustomerController.java"*/-->
+    <!--/*@thymesVar id="yacht" type="com.example.charter.logic.TempService.java"*/-->
+<div th:switch="${customers}">
+    <h2 th:case="null">No customers yet!</h2>
+    <div th:case="*">
+        <h2>Users</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Licence</th>
+                <th>Action</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="customer : ${customers}">
+                <td th:text="${customer.firstName}"></td>
+                <td th:text="${customer.lastName}"></td>
+                <td th:text="${customer.phoneNumber}"></td>
+                <td th:text="${customer.email}"></td>
+                <td th:text="${customer.licenceNumber}"></td>
+                <td>
+                    <a title="Edit" th:href="@{/showFormForUpdate/{id}(id=${customer.customerId})}" >Update</a>
+                    <a  title="Delete">del</a>
+                </td>
+
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/signup">Add a new user</a></p>
+</div>
+</main>
+</body>
+</html>
+
+<!--    dodac showFormForUpdate i delete
+dolozyc handling id w adresach @PathVariable    -->

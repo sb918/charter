@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page</title>
+    <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.min.css">
+</head>
+
+<body>
+
+<main><div>
+    
+    <!--/*@thymesVar id="customer" type="com.example.charter.model.CustomerController.java"*/-->
+    <!--/*@thymesVar id="yacht" type="com.example.charter.logic.TempService.java"*/-->
+
+    
+
+<div><table>
+    <thead>
+    <tr>
+        <th>From</th>
+        <th>To</th>
+        <th>Yacht</th>
+        <th>Customer</th>
+    
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="reservation : ${reservations}">
+        <td th:text="${reservation.reservationFrom}"></td>
+        <td th:text="${reservation.reservationTo}"></td>
+        <td th:text="${reservation.reservedYachtId}"></td>
+        <td th:text="${reservation.reservedCustomerId}"> <a th:href="@{/category/edit/{id}(id=${category.idCategory})}">view</a></td>
+
+        <td><a th:href="@{/updateReservation/{id}(id=${reservation.id})}">Edit</a>
+        <a th:href="@{/deleteReservation/{id}(id=${reservation.id})}">Delete</a></td>
+        
+
+
+    </tr>
+    </tbody>
+    </table>
+</div>
+
+
+<br><br>
+<fieldset>
+    <legend>Customer not found?</legend>
+            
+                <a th:href="@{/addCustomer}">Add customer</a>
+            
+</fieldset>
+
+</main>
+</body>
+</html>

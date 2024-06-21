@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page</title>
+    <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.min.css">
+</head>
+<body>
+<main>
+    <!--/*@thymesVar id="customer" type="com.example.charter.model.CustomerRepository.java"*/-->
+   
+    <form action="#" method="post" th:action="@{/saveReservation}" th:object="${reservation}">
+        <fieldset>
+
+
+
+            <label for="reservedCustomerId">Choose a customer:</label>
+                <select  name="reservedCustomerId" id="reservedCustomerId" th:field="*{reservedCustomerId}">
+                    <option th:each="customer : ${customers}" 
+                            th:value="${customer.customerId}" 
+                            th:text="${customer.firstName} + ' ' + ${customer.lastName}"></option>
+                </select>
+
+               
+                <label for="reservedYachtId">Choose a yacht:</label>
+                <select  name="reservedYachtId" id="reservedYachtId" th:field="*{reservedYachtId}">
+                    <option th:each="yacht : ${yachts}" 
+                            th:value="${yacht.id}" 
+                            th:text="${yacht.name} + ' ' + ${yacht.id}"></option>
+                </select>
+
+                <table>
+                    <td>
+                        <label for="">Start date:</label>
+                        <input type="date" id="${reservationFrom}" name="reservationFrom" th:field="*{reservationFrom}"
+                        value="2023-05-01"
+                        min="2023-01-01" max="2023-12-31">
+                    </td>
+            
+                    <td>
+                        <label for="end">End date:</label>
+                        <input type="date" id="${reservationTo}" name="reservationTo" th:field="*{reservationTo}"
+                        value="2023-05-01"
+                        min="2023-01-01" max="2023-12-31">
+                    </td>
+            
+            
+                </table>
+
+
+s
+
+        </fieldset>
+
+        <input type="submit" /> 
+
+    </form>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page</title>
+    <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.min.css">
+</head>
+<body>
+<main>
+    <!--/*@thymesVar id="reservation" type="com.example.charter.model.ReservationRepository.java"*/-->
+    <!--/*@thymesVar id="yacht" type="com.example.charter.model.YachtRepository.java"*/-->
+    <!--/*@thymesVar id="customer" type="com.example.charter.model.CustomerRepository.java"*/-->
+    
+
+
+    <form action="#" method="GET" th:action="@{/addReservationProperties}" th:object="${reservation}">
+
+            <fieldset>
+                <input type="hidden" th:field="*{id}" />
+                <input type="hidden" th:field="*{reservationFrom}" />
+                <input type="hidden" th:field="*{reservationTo}" />
+
+
+                <label for="reservedCustomerId">Choose a customer:</label>
+                <select  name="reservedCustomerId" id="reservedCustomerId" th:field="*{reservedCustomerId}">
+                    <option th:each="customer : ${customers}" 
+                            th:value="${customer.customerId}" 
+                            th:text="${customer.firstName} + ' ' + ${customer.lastName}"></option>
+                </select>
+
+               
+                <label for="reservedYachtId">Choose a yacht:</label>
+                <select  name="reservedYachtId" id="reservedYachtId" th:field="*{reservedYachtId}">
+                    <option th:each="yacht : ${availableYachts}" 
+                            th:value="${yacht.id}" 
+                            th:text="${yacht.name} + ' ' + ${yacht.type}"></option>
+                </select>
+
+
+                <input type="submit"/>
+
+                    
+
+                    
+
+       
+
+    </form>
+
+
+
+
+
+</main>
+
+</body>
+</html>

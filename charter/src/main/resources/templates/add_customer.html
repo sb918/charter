@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page</title>
+    <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.min.css">
+</head>
+<body>
+<main>
+    <!--/*@thymesVar id="customer" type="com.example.charter.model.CustomerRepository.java"*/-->
+   
+    <form action="#" method="post" th:action="@{/saveCustomer}" th:object="${customer}">
+        <fieldset>
+            <legend>Add customer</legend>
+            <label>First name
+             <input type="text" value=*{firstName} th:field="*{firstName}"/>
+            </label>
+
+            <label>Last name
+             <input type="text" value="*{lastName}" th:field="*{lastName}"/>
+            </label>
+
+            <label>Phone number
+             <input type="text" value="*{phoneNumber}" th:field="*{phoneNumber}"/>
+            </label>
+
+            <label>Email 
+             <input type="text" value="*{email}" th:field="*{email}"/>
+            </label>
+
+            <label>Licence number
+             <input type="text" value=*{licenceNumber} th:field="*{licenceNumber}"/>
+            </label>
+
+        </fieldset>
+
+        <input type="submit" /> 
+
+    </form>
+</main>
+
+</body>
+</html>

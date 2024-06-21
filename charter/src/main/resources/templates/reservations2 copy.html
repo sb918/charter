@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page</title>
+    <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.min.css">
+</head>
+<body>
+<main>
+    <!--/*@thymesVar id="reservation" type="com.example.charter.model.ReservationRepository.java"*/-->
+    <!--/*@thymesVar id="yacht" type="com.example.charter.model.YachtRepository.java"*/-->
+    <!--/*@thymesVar id="yacht" type="com.example.charter.model.ReservationController.java"*/-->
+    <form action="#" method="post" th:action="@{/saveReservation/customer/{customer.customerId}}" th:object="${customer}">
+    
+
+        <select th:field="${customer}">
+            <option th:each="customer : ${customers}" 
+                    th:value="${customer}" 
+                    th:text="${customer.firstName} + ' ' + ${customer.lastName}"></option>
+        </select>
+
+
+  
+    </form>
+
+    <form>
+        <table>
+            <td>
+                <label for="">Start date:</label>
+                <input type="date" id="start" name="trip-start"
+                value="2023-05-01"
+                min="2023-01-01" max="2023-12-31">
+            </td>
+
+            <td>
+                <label for="end">End date:</label>
+                <input type="date" id="end" name="trip-start"
+                value="2023-05-01"
+                min="2023-01-01" max="2023-12-31">
+            </td>
+
+
+        </table>
+    </form>
+
+        <form action="#" method="get" th:action="@{/reservations2}" th:object="${yacht}">
+            <table>
+                <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Length</th>
+            
+            
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="yacht : ${listedYacht}">
+                  <td th:text="${yacht.name}"></td>
+                  <td th:text="${yacht.type}"></td>
+                  <td th:text="${yacht.length}"></td>
+                  <td><a th:href="@{/updateYacht/{id}(id=${yacht.id})}">Edit</a>
+                    <a th:href="@{/deleteYacht/{id}(id=${yacht.id})}">Delete</a></td>
+            
+                </tr>
+                </tbody>
+              </table>
+        </form>
+
+
+
+
+        <div>
+            <!--/*@thymesVar id="yacht" type="com.example.charter.model.YachtRepository.java"*/-->
+            
+        
+        
+    <label>Select yacht</label>
+
+    <select th:field="${yacht}">
+      <option th:each="yacht : ${yachts}" 
+              th:value="${yacht}" 
+              th:text="${yacht.name} + ' ' + ${yacht.type}"></option>
+    </select>
+
+    
+
+        
+              
+        </div>
+
+        <div><table>
+            <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Licence</th>
+                <th>Action</th>
+        
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="customer : ${customers}">
+                <td th:text="${customer.firstName}"></td>
+                <td th:text="${customer.lastName}"></td>
+                <td th:text="${customer.phoneNumber}"></td>
+                <td th:text="${customer.email}"></td>
+                <td th:text="${customer.licenceNumber}"></td>
+                <td><a th:href="@{/updateCustomer/{id}(id=${customer.customerId})}">Edit</a>
+                <a th:href="@{/deleteCustomer/{id}(id=${customer.customerId})}">Delete</a></td>
+                
+        
+        
+            </tr>
+            </tbody>
+            </table>
+
+            <select th:field="*{customer}">
+                <option th:each="customer : ${listedCustomer}" 
+                        th:value="${customer}" 
+                        th:text="${customer.firstName} + ' ' + ${customer.lastName}"></option>
+              </select>
+        </div>
+       
+
+
+
+    </form>
+</main>
+
+</body>
+</html>

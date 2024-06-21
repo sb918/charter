@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page</title>
+    <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.min.css">
+</head>
+<body>
+<main>
+    <!--/*@thymesVar id="customer" type="com.example.charter.model.CustomerRepository.java"*/-->
+   
+    <form action="#" method="post" th:action="@{/saveReservation}" th:object="${reservation}">
+        <fieldset>
+
+
+            <input type="hidden" th:field="*{id}" />
+            <legend>reservationFrom</legend>
+            <label>From
+             <input type="text"  th:field="*{reservationFrom}"/>
+            </label>
+
+            <label>To
+             <input type="text"  th:field="*{reservationTo}"/>
+            </label>
+
+            <label>Yacht
+
+                <select  name="reservedYachtId" id="reservedYachtId">
+                    <option th:each="yacht : ${yachts}" 
+                            th:value="${yacht.id}" 
+                            th:text="${yacht.name} + ' ' + ${yacht.id}"></option>
+                </select>
+             <input type="url"  th:field="*{reservedYachtId}"/>
+            </label>
+
+            <label>Customer
+             <input type="text"  th:field="*{reservedCustomerId}"/>
+
+            </label>
+
+s
+
+        </fieldset>
+
+        <input type="submit" /> 
+
+    </form>
+</main>
+
+</body>
+</html>
